@@ -11,10 +11,13 @@ if (leadsFromLocalStorage) {
     render(myLeads)
 }
 
-tabBtn.addEventListener("click", function(){    
+tabBtn.addEventListener("click", function(){  
+      
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
         myLeads.push(tabs[0].url)
+        // setting the myLeads array to the local storage
         localStorage.setItem("myLeads", JSON.stringify(myLeads) )
+
         render(myLeads)
     })
 })
